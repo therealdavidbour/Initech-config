@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: orders-api
-          image: ghcr.io/therealdavidbour/orders-api:latest
+          image: ghcr.io/therealdavidbour/orders-api:0f2e1e99c1b92f6af59c610f006263604cd5db12
           ports:
             - containerPort: 8001
