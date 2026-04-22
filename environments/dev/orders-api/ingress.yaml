@@ -3,8 +3,14 @@ kind: Ingress
 metadata:
   name: orders-api
   namespace: dev
+  annotations:
+    cert-manager.io/cluster-issuer: "k3d-ca-issuer"
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - orders-api.10-0-0-200.nip.io
+      secretName: orders-api-tls
   rules:
     - host: orders-api.10-0-0-200.nip.io
       http:

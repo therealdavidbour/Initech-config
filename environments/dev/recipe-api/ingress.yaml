@@ -3,8 +3,14 @@ kind: Ingress
 metadata:
   name: recipe-api
   namespace: dev
+  annotations:
+    cert-manager.io/cluster-issuer: "k3d-ca-issuer"
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - recipe-api.10-0-0-200.nip.io
+      secretName: recipe-api-tls
   rules:
     - host: recipe-api.10-0-0-200.nip.io
       http:

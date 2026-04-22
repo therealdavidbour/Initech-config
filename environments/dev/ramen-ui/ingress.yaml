@@ -3,8 +3,14 @@ kind: Ingress
 metadata:
   name: ramen-ui
   namespace: dev
+  annotations:
+    cert-manager.io/cluster-issuer: "k3d-ca-issuer"
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - ramen-ui.10-0-0-200.nip.io
+      secretName: ramen-ui-tls
   rules:
     - host: ramen-ui.10-0-0-200.nip.io
       http:
