@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: recipe-api
-          image: ghcr.io/therealdavidbour/recipe-api:0f2e1e99c1b92f6af59c610f006263604cd5db12
+          image: ghcr.io/therealdavidbour/recipe-api:fb3bed97fe6a4095a5ce01ffc94d612868eea0fd
           ports:
             - containerPort: 8000
