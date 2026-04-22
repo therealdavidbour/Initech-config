@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-app-2
+  name: recipe-api
   namespace: dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: example-app-2
+      app: recipe-api
   template:
     metadata:
       labels:
-        app: example-app-2
+        app: recipe-api
     spec:
       containers:
-        - name: example-app-2
-          image: nginx:alpine
+        - name: recipe-api
+          image: ghcr.io/therealdavidbour/recipe-api:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8000

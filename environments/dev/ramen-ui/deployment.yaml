@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ramen-ui
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ramen-ui
+  template:
+    metadata:
+      labels:
+        app: ramen-ui
+    spec:
+      containers:
+        - name: ramen-ui
+          image: ghcr.io/therealdavidbour/ramen-ui:latest
+          ports:
+            - containerPort: 80

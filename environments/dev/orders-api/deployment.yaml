@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-app
+  name: orders-api
   namespace: dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: example-app
+      app: orders-api
   template:
     metadata:
       labels:
-        app: example-app
+        app: orders-api
     spec:
       containers:
-        - name: example-app
-          image: nginx:alpine
+        - name: orders-api
+          image: ghcr.io/therealdavidbour/orders-api:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8001

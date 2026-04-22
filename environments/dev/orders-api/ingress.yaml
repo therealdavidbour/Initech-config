@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-app
+  name: orders-api
   namespace: dev
 spec:
   ingressClassName: nginx
   rules:
-    - host: example-app.10.0.0.200.nip.io
+    - host: orders-api.10-0-0-200.nip.io
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: example-app
+                name: orders-api
                 port:
                   number: 80
