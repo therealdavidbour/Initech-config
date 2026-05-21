@@ -11,7 +11,7 @@ spec:
     path: services/recipe-api/templates
   destination:
     server: https://kubernetes.default.svc
-    namespace: recipe-api-{{ .Values.branch | replace "/" "-" }}
+    namespace: {{ .Values.branch | replace "/" "-" }}
   syncPolicy:
     automated:
       prune: true

@@ -11,7 +11,7 @@ spec:
     path: services/ramen-ui/templates
   destination:
     server: https://kubernetes.default.svc
-    namespace: ramen-ui-{{ .Values.branch | replace "/" "-" }}
+    namespace: {{ .Values.branch | replace "/" "-" }}
   syncPolicy:
     automated:
       prune: true
