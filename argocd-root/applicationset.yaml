@@ -6,18 +6,23 @@ metadata:
 spec:
   goTemplate: true
   generators:
-    - git:
-        repoURL: https://github.com/therealdavidbour/Initech-config.git
-        revision: HEAD
-        branches:
-          - pattern: "^env/.*"
+    - scmProvider:
+        github:
+          organization: initech-ai
+          allBranches: true
+          tokenRef:
+            secretName: github-token
+            key: token
+        filters:
+          - repositoryMatch: "Initech-config"
+            branchMatch: "^env/.*"
   template:
     metadata:
       name: 'root-{{ .branch | replace "/" "-" }}'
     spec:
       project: default
       source:
-        repoURL: https://github.com/therealdavidbour/Initech-config.git
+        repoURL: '{{ .url }}'
         targetRevision: '{{ .branch }}'
         path: apps-rendered
       destination:
