@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: orders-api-{{ .Values.branch | replace "/" "-" }}
+  name: orders-api-{{ .Values.branch | trimPrefix "env/" }}
   namespace: argocd
 spec:
   project: default
@@ -11,7 +11,7 @@ spec:
     path: services/orders-api/templates
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.branch | replace "/" "-" }}
+    namespace: {{ .Values.branch | trimPrefix "env/" }}
   syncPolicy:
     automated:
       prune: true

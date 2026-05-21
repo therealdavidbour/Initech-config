@@ -1,17 +1,19 @@
+---
+# Source: apps/templates/recipe-api.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: recipe-api-{{ .Values.branch | trimPrefix "env/" }}
+  name: recipe-api-main
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: {{ .Values.repoURL }}
-    targetRevision: {{ .Values.branch }}
+    repoURL: https://github.com/initech-ai/Initech-config.git
+    targetRevision: main
     path: services/recipe-api/templates
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.branch | trimPrefix "env/" }}
+    namespace: main
   syncPolicy:
     automated:
       prune: true

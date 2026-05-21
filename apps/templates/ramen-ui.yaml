@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ramen-ui-{{ .Values.branch | replace "/" "-" }}
+  name: ramen-ui-{{ .Values.branch | trimPrefix "env/" }}
   namespace: argocd
 spec:
   project: default
@@ -11,7 +11,7 @@ spec:
     path: services/ramen-ui/templates
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.branch | replace "/" "-" }}
+    namespace: {{ .Values.branch | trimPrefix "env/" }}
   syncPolicy:
     automated:
       prune: true
